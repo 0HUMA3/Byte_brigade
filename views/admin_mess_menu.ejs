@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess_Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheet/admin_mess_menu.css">
+</head>
+<body>
+
+    <header>
+        Mess Menia
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="container">
+        <div class="account-info" id="account-info">
+            <!-- ... (account info content) ... -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Microsoft_Account_Logo.svg/1200px-Microsoft_Account_Logo.svg.png" alt="Logo">
+            <h3>Welcome, <%= name %></h3>
+            <nav>
+                        <ul>
+                            <li><a href="/admin_dashboard">Dashboard</a></li>
+                            <li><a href="/admin_menu">Mess Menu</a></li>
+                            <li><a href="/admin_inprocess">Mess Complaint</a></li>
+                            <li><a href="/admin_chat">Chat</a></li>
+                            <!-- Add more menu items as needed -->
+                        </ul>
+                        
+            </nav>
+            <div class="footer">
+                <div class="logout"><a href="/">Logout</a></div>
+            </div>
+        </div>
+
+        <div class="mess-menu-section">
+            <!-- Your complaint section goes here -->
+            <h2>Mess Menu</h2>
+            <div class="complaint-links">
+                <a href="/admin_menu">Edit Menu</a>
+                <a href="/admin_mess_menu" class="active">Current Menu</a>
+            </div>
+            <hr>
+            <% if(ele.length > 0) { %>
+                <% ele.forEach(function(data){ %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Breakfast</th>
+                                <th>Lunch</th>
+                                <th>Snacks</th>
+                                <th>Dinner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td><%= data.monday.monbreak %></td>
+                                <td><%= data.monday.monlunch %></td>
+                                <td><%= data.monday.monsnack %></td>
+                                <td><%= data.monday.mondinner %></td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td><%= data.tuesday.tuebreak %></td>
+                                <td><%= data.tuesday.tuelunch %></td>
+                                <td><%= data.tuesday.tuesnack %></td>
+                                <td><%= data.tuesday.tuedinner %></td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td><%= data.wednesday.wedbreak %></td>
+                                <td><%= data.wednesday.wedlunch %></td>
+                                <td><%= data.wednesday.wedsnack%></td>
+                                <td><%= data.wednesday.weddinner %></td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td><%= data.thursday.thurbreak %></td>
+                                <td><%= data.thursday.thurlunch %></td>
+                                <td><%= data.thursday.thursnack %></td>
+                                <td><%= data.thursday.thurdinner %></td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td><%= data.friday.fribreak %></td>
+                                <td><%= data.friday.frilunch %></td>
+                                <td><%= data.friday.frisnack %></td>
+                                <td><%= data.friday.fridinner %></td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td><%= data.saturday.satbreak %></td>
+                                <td><%= data.saturday.satlunch %></td>
+                                <td><%= data.saturday.satsnack %></td>
+                                <td><%= data.saturday.satdinner %></td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td><%= data.sunday.sunbreak %></td>
+                                <td><%= data.sunday.sunlunch %></td>
+                                <td><%= data.sunday.sunsnack %></td>
+                                <td><%= data.sunday.sundinner%></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <% }) %>
+                <% } %>
+           
+        </div>
+
+            <div class="user-details">
+                <!-- Add additional user details if needed -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/responsive.js"></script>
+
+</body>
+</html>

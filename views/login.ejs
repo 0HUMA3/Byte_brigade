@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="title">Log In</div>
+    <div class="content">
+      <form action="/" method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" name="email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" required>
+          </div>
+        </div>
+        <div class="menu-select-label">Select Hostel:</div>
+            <select class="menu-select" name="hostel">
+                <option value="Patel Hostel">Patel Hostel</option>
+                <option value="Tilak Hostel">Tilak Hostel</option>
+                <option value="Malviya Hostel">Malviya Hostel</option>
+                <option value="Tandon Hostel">Tandon Hostel</option>
+                <option value="SVBH Hostel">SVBH Hostel</option>
+                <option value="New Boys Hostel">New Boys Hostel</option>
+                <option value="DJGH Hostel">DJGH Hostel</option>
+                <option value="KNGH Hostel">KNGH Hostel</option>
+            </select>
+        <div class="gender-details">
+          <input type="radio" name="role" id="dot-1" value="Student">
+          <input type="radio" name="role" id="dot-2" value="Mess-Admin"> 
+          <span class="gender-title">Select role</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Student</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Mess Admin</span>
+          </label>
+          </div>
+        </div>
+        <div class="security">
+            <input type="text" placeholder="Enter security key." name="security" id="sec" required>
+        </div>
+        <div class="button">
+          <input type="submit" value="Log In">
+        </div>
+      </form>
+    </div>
+    <a href="/signup">click here to sign up</a>
+  </div>
+  <script>
+    const secInput= document.getElementById('sec');
+    const messAdmin=document.getElementById('dot-2');
+    const student=document.getElementById('dot-1');
+    messAdmin.addEventListener('click',()=>{
+      secInput.style.display='block';  
+    });
+    student.addEventListener('click',()=>{
+        secInput.style.display='none';
+    })
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint</title>
+    <link rel="stylesheet" href="/stylesheet/complaint.css">
+    
+</head>
+<body>
+
+    <header>
+        Mess Menia
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="container">
+        <div class="account-info" id="account-info">
+            <!-- ... (account info content) ... -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Microsoft_Account_Logo.svg/1200px-Microsoft_Account_Logo.svg.png" alt="Logo">
+            <h3>Welcome, <%= name %></h3>
+            <nav>
+                
+                    <ul>
+                        <li><a href="/home">Dashboard</a></li>
+                        <li><a href="/menu">Mess Menu</a></li>
+                        <li><a href="/complaint">Mess Complaint</a></li>
+                        <li><a href="/chat">Chat</a></li>
+                        <!-- Add more menu items as needed -->
+                    </ul>
+                    
+            </nav>
+            <div class="footer">
+                <div class="logout"><a href="/">Logout</a></div>
+            </div>
+        </div>
+
+        <div class="complaint-section">
+            <!-- Your complaint section goes here -->
+            <h2>Mess Complaints</h2>
+            <div class="complaint-links">
+                <a href="/complaint" class="active">Add Complaints</a>
+                <a href="/inprocess">In Process</a>
+                <a href="/resolve">Resolved</a>
+            </div>
+            <hr>
+            <form class="complaint-form" action="/complaint" method="post">
+                <label class="complaint-input-label" for="title">Title</label>
+                <input type="text" id="title" class="complaint-input" placeholder="Title" name="title">
+
+                <label class="complaint-textarea-label" for="description">Description</label>
+                <textarea id="description" class="complaint-textarea" placeholder="Description" name="description"></textarea>
+
+                <label class="complaint-image-label" for="image">Image</label>
+                <input type="file" id="image" class="complaint-image" accept="image/*" placeholder="Upload Image" name="image">
+
+                <button class="submit-button">Submit</button>
+            </form>
+            <!-- Add your complaint content here -->
+        </div>
+    </div>
+
+    <script src="/javascript/responsive.js"></script>
+
+</body>
+</html>

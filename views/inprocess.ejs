@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inprocess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/stylesheet/inprocess.css">
+</head>
+<body>
+
+    <header>
+        Mess Menia
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div class="container">
+        <div class="account-info" id="account-info">
+            <!-- ... (account info content) ... -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Microsoft_Account_Logo.svg/1200px-Microsoft_Account_Logo.svg.png" alt="Logo">
+            <h3>Welcome, <%= name %></h3>
+            <nav>
+                
+                    <ul>
+                        <li><a href="/home">Dashboard</a></li>
+                        <li><a href="/menu">Mess Menu</a></li>
+                        <li><a href="/complaint">Mess Complaint</a></li>
+                        <li><a href="/chat">Chat</a></li>
+                        <!-- Add more menu items as needed -->
+                    </ul>
+                    
+            </nav>
+            <div class="footer">
+                <div class="logout"><a href="/">Logout</a></div>
+            </div>
+        </div>
+
+        <div class="complaint-section">
+            <!-- Your complaint section goes here -->
+            <h2>Mess Complaints</h2>
+            <div class="complaint-links">
+                <a href="/complaint">Add Complaints</a>
+                <a href="/inprocess" class="active">In Process</a>
+                <a href="/resolve">Resolved</a>
+            </div>
+            <hr>
+            <!-- In Progress Section -->
+            <div class="progress-section">
+                <!-- Progress Box 1 -->
+                <%if(record.length > 0) { %>
+                    <% record.forEach(function(element){ %>
+                        <div class="progress-box">
+                            <h3><%= element.title %></h3>
+                            <p><%= element.description %></p>
+                            <div class="like-dislike-icons">
+                                
+                                <i class="fa-solid fa-thumbs-up" id="like-icon"></i>
+                                <i class="fa-solid fa-thumbs-down" id="dislike-icon"></i>
+                                
+                            </div>
+                        </div>
+                    <% }) %>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascript/responsive.js"></script>
+    <!-- <script>
+        const likeIcon=document.getElementById('like-icon');
+        const dislikeIcon=document.getElementById('dislike-icon');
+        const likePara=document.getElementById('like');
+        const dislikePara=document.getElementById('dislike');
+        
+        likeIcon.addEventListener('click',()=>{
+            likeIcon.classList.toggle('like-click');
+            if(likeIcon.classList.contains('like-click')==true){
+                count++;
+                likePara.innerHTML=`${count}`;
+            }
+            else{
+                count--;
+                likePara.innerHTML=`${count}`;
+            }
+        })
+    </script> -->
+
+</body>
+</html>

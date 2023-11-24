@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="/signup" method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" name="fullname" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" name="email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" name="phone" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" placeholder="Confirm your password" name="confirmpass" required>
+          </div>
+        </div>
+        <div class="menu-select-label">Select Hostel:</div>
+        <select class="menu-select" name="hostel">
+            <option value="Patel Hostel">Patel Hostel</option>
+            <option value="Tilak Hostel">Tilak Hostel</option>
+            <option value="Malviya Hostel">Malviya Hostel</option>
+            <option value="Tandon Hostel">Tandon Hostel</option>
+            <option value="SVBH Hostel">SVBH Hostel</option>
+            <option value="New Boys Hostel">New Boys Hostel</option>
+            <option value="DJGH Hostel">DJGH Hostel</option>
+            <option value="KNGH Hostel">KNGH Hostel</option>
+        </select>
+        <div class="gender-details">
+          <input type="radio" name="role" id="dot-1" value="Student">
+          
+          <span class="gender-title">Select role</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Student</span>
+          </label>
+          </div>
+        </div>
+        <div class="security">
+          <input type="text" placeholder="Enter security key." name="security" id="sec" value="" required>
+      </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+    
+</body>
+</html>
