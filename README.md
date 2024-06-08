@@ -1,4 +1,15 @@
-Mess-Mania is a website that solves the problem of mess food/service based on rating and feedback from the students. 
-The website has authentication login and signup for students.
-The mess incharge and the student representatives are given special codes through which they can login.
-Uploading of images/videos are also possible.
+• Mess Menia :-
+A user-friendly platform providing seamless communication between mess admins and users.
+– Tools & technologies used:-
+  • EJS 
+  • CSS 
+  • Javascript
+  • Nodejs
+  • Expressjs
+  • MongoDB
+– Users can effortlessly access and view the daily mess menus, making meal planning convenient
+  and transparent.
+– The platform allows users to submit complaints easily, providing a streamlined process for
+  reporting issues.
+– Enhancing community engagement, users can participate in group chats.
+
