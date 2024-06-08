@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 const session = require('express-session');
 const { complaint, register, resolve, patelmenu, tilakmenu, malviyamenu, tandonmenu, svbhmenu, newhostelmenu, djghmenu, knghmenu } = require("./mongodb");
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 
 const app = express();
 
@@ -291,35 +292,43 @@ app.get('/admin_mess_menu',AdminProtected, async (req, res) => {
 app.post('/', async (req, res) => {
     try {
         const check = await register.findOne({ email: req.body.email }) //Check constant contain login info.
-        req.session.isAuth = true;
-        req.session.user = { name: check.username, email: check.email, hostel: check.hostel, role: check.role, fullname: check.fullname };
-        if (check.password === req.body.password) {
-            if (check.hostel === req.body.hostel) {
-                if (check.role === req.body.role) {
-                    if (check.role === "Mess-Admin") {
-                        if (check.security === req.body.security) {
-                            res.render("admin_dashboard", req.session.user);
+        if(!check){
+            return res.render("againlogin", { error: "Email" });
+        }
+        bcrypt.compare(req.body.password, check.password, function(err, result) {
+            if(result){
+                if (check.hostel === req.body.hostel) {
+                    if (check.role === req.body.role) {
+                        if (check.role === "Mess-Admin") {
+                            if (check.security === req.body.security) {
+                                req.session.isAuth = true;
+                                req.session.user = { name: check.username, email: check.email, hostel: check.hostel, role: check.role, fullname: check.fullname };
+                                res.render("admin_dashboard", req.session.user);
+                            }
+                            else {
+                                res.render('againlogin', { error: 'Security Key' })
+                            }
+    
                         }
                         else {
-                            res.render('againlogin', { error: 'Security Key' })
+                            req.session.isAuth = true;
+                            req.session.user = { name: check.username, email: check.email, hostel: check.hostel, role: check.role, fullname: check.fullname };
+                            res.render("home", req.session.user);
                         }
-
                     }
                     else {
-                        res.render("home", req.session.user);
+                        res.render("againlogin", { error: "Role" });
                     }
                 }
                 else {
-                    res.render("againlogin", { error: "Role" });
+                    res.render("againlogin", { error: "Hostel" });
                 }
             }
             else {
-                res.render("againlogin", { error: "Hostel" });
+                res.render("againlogin", { error: "Password" });
             }
-        }
-        else {
-            res.render("againlogin", { error: "Password" });
-        }
+        });
+        
     }
     catch {
         res.render("againlogin", { error: "Email" });
@@ -331,20 +340,27 @@ app.post('/', async (req, res) => {
 
 // Creating post route for signup page .
 app.post('/signup', async (req, res) => {
-    const data = {
-        email: req.body.email,
-        password: req.body.password,
-        role: req.body.role,
-        fullname: req.body.fullname,
-        username: req.body.username,
-        phone: req.body.phone,
-        confirmpass: req.body.confirmpass,
-        hostel: req.body.hostel
+    const user = await register.findOne({email:req.body.email});
+    if(user){
+        return res.render("againlogin", { error: "Email" });
     }
-    await register.insertMany([data]);  //Data inserted into database .
-    req.session.user = { name: req.body.username, email: req.body.email, hostel: req.body.hostel, role: req.body.role, fullname: req.body.fullname }
-    req.session.isAuth=true;
-    res.render("home", req.session.user);
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+        const data = {
+            email: req.body.email,
+            password: hash,
+            role: req.body.role,
+            fullname: req.body.fullname,
+            username: req.body.username,
+            phone: req.body.phone,
+            confirmpass: hash,
+            hostel: req.body.hostel
+        }
+        register.insertMany([data]);  //Data inserted into database .
+        req.session.user = { name: req.body.username, email: req.body.email, hostel: req.body.hostel, role: req.body.role, fullname: req.body.fullname }
+        req.session.isAuth=true;
+        res.render("home", req.session.user);
+    });
+    
 
 });
 
