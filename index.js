@@ -344,7 +344,7 @@ app.post('/signup', async (req, res) => {
     if(user){
         return res.render("againlogin", { error: "Email" });
     }
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
         const data = {
             email: req.body.email,
             password: hash,
