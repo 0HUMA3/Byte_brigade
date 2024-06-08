@@ -507,6 +507,11 @@ app.post('/admin_menu', async (req, res) => {
             throw err;
         }
     }
+});
+
+app.post('/logout',(req,res)=>{
+    req.session.isAuth = false;
+    res.redirect('/');
 })
 
 //Creating server to listen port 3000 .

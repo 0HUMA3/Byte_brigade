@@ -213,15 +213,13 @@ h2 {
     border-top: 1px solid #ecf0f1;
 }
 
-.logout {
+.footer button {
+    color: #ecf0f1;
     cursor: pointer;
     font-weight: bold;
     margin-top: 10px;
-
-}
-.logout a{
-    text-decoration: none;
-    color: #ecf0f1;
+    border: none;
+    background-color: #297fb900;
 }
 
 @media (max-width: 600px) {
