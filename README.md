@@ -1,8 +1,8 @@
-• Mess Menia :-
+# Mess Mania :-
 
-A user-friendly platform providing seamless communication between mess admins and users.
+Welcome to Mess Mania, the cutting-edge mess management website designed exclusively for our college community. Mess Mania revolutionizes the way students interact with their mess facilities, providing a seamless, efficient, and enjoyable dining experience. Here’s what makes Mess Mania indispensable:
 
-– Tools & technologies used:-
+# Tools & technologies used:-
 
   • EJS 
   
@@ -15,6 +15,8 @@ A user-friendly platform providing seamless communication between mess admins an
   • Expressjs
   
   • MongoDB
+
+  # Features :-
   
 – Users can effortlessly access and view the daily mess menus, making meal planning convenient
   and transparent.
