@@ -26,3 +26,5 @@ Welcome to Mess Mania, the cutting-edge mess management website designed exclusi
   
 – Enhancing community engagement, users can participate in group chats.
 
+- The mess admin and students representatives are given authethicated codes for login.
+
