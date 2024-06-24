@@ -1,6 +1,7 @@
 //Requiring all important package .
 const express = require('express');
 const http = require("http");
+require('dotenv').config()
 const { Server } = require("socket.io");
 const session = require('express-session');
 const { complaint, register, resolve, patelmenu, tilakmenu, malviyamenu, tandonmenu, svbhmenu, newhostelmenu, djghmenu, knghmenu } = require("./mongodb");
@@ -16,6 +17,8 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 let socketConnected = new Set();
+
+const PORT = process.env.PORT
 
 io.on("connection", (socket) => {
     socketConnected.add(socket.id);
@@ -531,6 +534,6 @@ app.post('/logout',(req,res)=>{
 })
 
 //Creating server to listen port 3000 .
-server.listen(3000, () => {
+server.listen(PORT, () => {
     console.log("Server is connected");
 });
